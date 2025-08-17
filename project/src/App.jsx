@@ -1,16 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RecipePage from "./pages/RecipePage";
+import HomePage from "./pages/HomePage.jsx";
+import RecipePage from "./pages/RecipePage.jsx";
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50 text-gray-800">
         <Routes>
-          {/* Home with search + recipe list */}
           <Route path="/" element={<HomePage />} />
-
-          {/* Recipe details page */}
           <Route path="/recipe/:id" element={<RecipePage />} />
         </Routes>
       </div>

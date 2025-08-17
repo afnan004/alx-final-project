@@ -1,12 +1,9 @@
-import SearchBar from "../components/SearchBar";
-import RecipeList from "../components/RecipeList";
-
 export default function HomePage() {
-  return (
-    <div>
-      <h1 className="text-center text-3xl font-bold py-6">Recipe Finder</h1>
-      <SearchBar />
-      <RecipeList />
-    </div>
-  );
-}
+    return (
+      <div className="p-6 text-center">
+        <h1 className="text-3xl font-bold mb-4">🍳 Recipe Finder</h1>
+        <p className="text-gray-600">Search and discover delicious recipes!</p>
+      </div>
+    );
+  }
+  
