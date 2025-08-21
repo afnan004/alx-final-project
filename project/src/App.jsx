@@ -1,18 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import RecipePage from "./pages/RecipePage.jsx";
+import HomePage from "./pages/HomePage";
+import RecipePage from "./pages/RecipePage";
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 text-gray-800">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/recipe/:id" element={<RecipePage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:id" element={<RecipePage />} />
+      </Routes>
     </Router>
   );
 }
-
-export default App;
