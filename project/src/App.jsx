@@ -1,14 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RecipePage from "./pages/RecipePage";
+import Navbar from "./components/Navbar.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import RecipePage from "./pages/RecipePage.jsx";
+import SignIn from "./pages/SignIn.jsx"; // renamed
 
-export default function App() {
+function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/recipe/:id" element={<RecipePage />} />
-      </Routes>
+      <Navbar />
+      <div className="pt-20">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/recipe/:id" element={<RecipePage />} />
+          <Route path="/signin" element={<SignIn />} /> {/* single sign in */}
+        </Routes>
+      </div>
     </Router>
   );
 }
+
+export default App;
