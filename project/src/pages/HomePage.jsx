@@ -23,7 +23,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
+      {}
       <section className="bg-yellow-50 py-16 px-6 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Discover Delicious Recipes
@@ -39,7 +39,7 @@ export default function HomePage() {
         </a>
       </section>
 
-      {/* Categories Section */}
+      {}
       <section className="py-12 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-semibold mb-8 text-center">
           Browse by Category
@@ -67,7 +67,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Search + Recipes */}
+      {}
       <section id="search" className="p-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-semibold mb-4">Find a Recipe</h2>
         <SearchBar onSearch={fetchRecipes} />

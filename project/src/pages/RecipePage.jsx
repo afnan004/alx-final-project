@@ -5,6 +5,7 @@ export default function RecipePage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -18,8 +19,14 @@ export default function RecipePage() {
           setError("Recipe not found.");
           setRecipe(null);
         } else {
-          setRecipe(data.meals[0]);
+          const meal = data.meals[0];
+          setRecipe(meal);
           setError(null);
+
+          // check if already in favorites
+          const savedFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+          setIsFavorite(savedFavorites.some((fav) => fav.idMeal === meal.idMeal));
         }
       } catch (err) {
         setError("Something went wrong. Please try again later.");
@@ -27,6 +34,21 @@ export default function RecipePage() {
     }
     fetchRecipe();
   }, [id]);
+
+  const handleFavorite = () => {
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    if (isFavorite) {
+    
+      const updated = savedFavorites.filter((fav) => fav.idMeal !== recipe.idMeal);
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      setIsFavorite(false);
+    } else {
+
+      savedFavorites.push(recipe);
+      localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+      setIsFavorite(true);
+    }
+  };
 
   if (error) {
     return (
@@ -43,12 +65,12 @@ export default function RecipePage() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      {/* Back Button */}
+      {}
       <Link to="/" className="text-blue-600 hover:underline block mb-4">
         ← Back to Home
       </Link>
 
-      {/* Title & Image */}
+      {}
       <h1 className="text-3xl font-bold mb-4">{recipe.strMeal}</h1>
       <img
         src={recipe.strMealThumb}
@@ -56,7 +78,17 @@ export default function RecipePage() {
         className="rounded-lg mb-4 w-full"
       />
 
-      {/* Category & Area */}
+      {}
+      <button
+        onClick={handleFavorite}
+        className={`px-4 py-2 mb-4 rounded-lg text-white ${
+          isFavorite ? "bg-red-600" : "bg-gray-600"
+        }`}
+      >
+        {isFavorite ? "Remove from Favorites " : "Add to Favorites "}
+      </button>
+
+      {}
       <p className="mb-2">
         <strong>Category:</strong> {recipe.strCategory}
       </p>
@@ -64,11 +96,11 @@ export default function RecipePage() {
         <strong>Area:</strong> {recipe.strArea}
       </p>
 
-      {/* Instructions */}
+      {}
       <h2 className="text-2xl font-semibold mt-4">Instructions</h2>
       <p className="mt-2 whitespace-pre-line">{recipe.strInstructions}</p>
 
-      {/* Ingredients */}
+      {}
       <h2 className="text-2xl font-semibold mt-6 mb-2">Ingredients</h2>
       <ul className="list-disc list-inside">
         {Array.from({ length: 20 }, (_, i) => i + 1)
@@ -84,7 +116,7 @@ export default function RecipePage() {
           ))}
       </ul>
 
-      {/* Video Tutorial */}
+      {}
       {recipe.strYoutube && (
         <div className="mt-6">
           <h2 className="text-2xl font-semibold mb-2">Video Tutorial</h2>

@@ -14,6 +14,9 @@ export default function Navbar() {
           <Link to="/signin" className="hover:text-yellow-600">
             Sign In
           </Link>
+          <Link to="/favorites" className="hover:text-yellow-400">
+  Favorites
+</Link>
         </div>
       </div>
     </nav>

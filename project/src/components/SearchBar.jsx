@@ -16,7 +16,7 @@ export default function SearchBar({ onSearch }) {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for a recipe..."
+        placeholder="Search for a certin recipe.."
         className="border p-2 flex-1 rounded"
       />
       <button
