@@ -1,4 +1,4 @@
-A simple recipe web app where you can search meals, explore categories, and save your favorite recipes. Built with React, styled with TailwindCSS, and powered by TheMealDB API
+A simple recipe website/app where you can search meals, explore categories, and save your favorite recipes. Built with React, styled with TailwindCSS, and powered by TheMealDB API
 .
 
 - Features
